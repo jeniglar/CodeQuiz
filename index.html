@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Quiz</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-image: url("./Assets/geometric-leaves.png")
+        }
+    </style>
+</head>
+
+<body>
+    <a href="highscores.html">High Scores</a>
+    <section class="hidden">Timer: <span id="timer">60</span></section>
+    <section class="container">
+        <section class="row">
+            <aside class="col-1"></aside>
+            <main class="jumbotron col-10 mt-5" style="text-align:center">
+                <h1 class="display-4">Coding Quiz Challenge</h1>
+                <p class="lead">Try to answer the following code-related questions within the 60 second time limit. Keep in mind that incorrect answers will penalize your score time by 10 seconds. Good luck!</p>
+                <hr class="my-4">
+                <p>Click the Start button to begin!</p>
+                <a class="btn btn-primary btn-lg" role="button">Start</a>
+            <aside class="col-1"></aside>
+        </section>
+        </main>
+    </section>
+    <main class="card mt-5" style="max-width: 540px;">
+        <section class="card-body">
+            <h5 id="question"></h5>
+            <button id="answer1"></button>
+            <button id="answer2"></button>
+            <button id="answer3"></button>
+            <button id="answer4"></button>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
