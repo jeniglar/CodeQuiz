@@ -1,3 +1,6 @@
-.card {
+#card1 {
+    display: none;
+}
+#card2 {
     display: none;
 }
