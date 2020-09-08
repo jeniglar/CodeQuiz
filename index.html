@@ -28,21 +28,31 @@
                 <p class="lead">Try to answer the following code-related questions within the 60 second time limit. Keep
                     in mind that incorrect answers will penalize your score time by 10 seconds. Good luck!</p>
                 <hr class="my-4">
-                <p>Click the Start button to begin!</p>
-                <a class="btn btn-primary btn-lg" role="button">Start</a>
-                <aside class="col-1"></aside>
+                <p>Click the Start button to begin the quiz!</p>
+                <a class="btn btn-primary btn-lg" id="start" role="button">Start</a>
+            </main>
+            <aside class="col-1"></aside>
         </section>
-        </main>
     </section>
-    <main class="card mt-5" style="max-width: 540px;">
-        <section class="card-body">
-            <h5 id="question"></h5>
-            <button id="answer1"></button>
-            <button id="answer2"></button>
-            <button id="answer3"></button>
-            <button id="answer4"></button>
+
+    <section class="container">
+        <section class="row">
+            <aside class="col-1"></aside>
+            <main class="card col-10 mt-5" style="max-width: 540px; text-align:center">
+            <section class="card-body">
+                <h5 id="question"></h5>
+                <section class="btn-group-vertical">
+                <button class="answer" id="answer1"></button>
+                <button class="answer" id="answer2"></button>
+                <button class="answer" id="answer3"></button>
+                <button class="answer" id="answer4"></button>
+            </section>
         </section>
     </main>
+    <aside class="col-1"></aside>
+</section>
+</section>
+
     <script src="script.js"></script>
 </body>
 

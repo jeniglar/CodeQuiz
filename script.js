@@ -1,4 +1,5 @@
 var timer = 60;
+var questionCounter = 0;
 var qAndA = [
     {"question": "Inside which HTML element do we put the JavaScript?",
     "answer1": "<script>",
@@ -43,26 +44,48 @@ var timerEl = document.getElementById("timer");
 var i = 0;
 
 
-function prepareRead() {
+function countdown() {
     timer = 60;
     var timeInterval = setInterval(function() {
       timerEl.textContent = timer;
       timer--;
   console.log(timer);
       if (timer === 0) {
-        timerEl.textContent = "";
-        gameOver();
+        timerEl.textContent = "0";
+        timesUp();
         clearInterval(timeInterval);
       }
     }, 1000);
   }
 
 
-function startfunction(){
- prepareRead()
+function startfunction() {
+ countdown();
+ quizStart();
+ var jumbotronEl = document.getElementsByClassName("jumbotron");
+ var cardEl = document.getElementsByClassName("card");
+ jumbotronEl[0].style.display = "none";
+ cardEl[0].style.display = "block";
 };
 
-function logicfunction(){
+function timesUp() {
+
+}
+
+function quizStart() {
+    var quiz = qAndA[questionCounter];
+    var questionEl = document.getElementById("question");
+    var answer1El = document.getElementById("answer1");
+    var answer2El = document.getElementById("answer2");
+    var answer3El = document.getElementById("answer3");
+    var answer4El = document.getElementById("answer4");
+
+    questionEl.textContent = quiz.question;
+    answer1El.textContent = quiz.answer1;
+    answer2El.textContent = quiz.answer2;
+    answer3El.textContent = quiz.answer3;
+    answer4El.textContent = quiz.answer4;
+
     if(correctAnswers){
 
     }
@@ -71,7 +94,28 @@ function logicfunction(){
     }
 };
 
-document.getElementsByClassName("btn")[0].addEventListener("click", startfunction);
+function checkAnswerFunction() {
+console.log("below");  
+console.log(this.value);
+if(this.value===correctAnswers[questionCounter]) {
+}
+  
+  else {
+
+  }
+  questionCounter++ 
+  quizStart();
+}
+
+
+document.getElementById("start").addEventListener("click",startfunction);
+
+document.getElementsByClassName("answer")[0].addEventListener("click",checkAnswerFunction);
+document.getElementsByClassName("answer")[1].addEventListener("click",checkAnswerFunction);
+document.getElementsByClassName("answer")[2].addEventListener("click",checkAnswerFunction);
+document.getElementsByClassName("answer")[3].addEventListener("click",checkAnswerFunction);
+
+
 
 
 for(var i=0; i<qAndA.length; i++){
