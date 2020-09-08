@@ -49,6 +49,12 @@ var questionIndex = 0;
 var timerEl = document.getElementById("timer");
 var i = 0;
 
+document.getElementById("start").addEventListener("click", startfunction);
+document.getElementsByClassName("answer")[0].addEventListener("click", checkAnswers);
+document.getElementsByClassName("answer")[1].addEventListener("click", checkAnswers);
+document.getElementsByClassName("answer")[2].addEventListener("click", checkAnswers);
+document.getElementsByClassName("answer")[3].addEventListener("click", checkAnswers);
+
 function countdown() {
   timer = 60;
   var timeInterval = setInterval(function () {
@@ -80,6 +86,7 @@ function timesUp() {
 };
 
 function quizStart() {
+  if(questionCounter < 6) {
   var quiz = qAndA[questionCounter];
   var questionEl = document.getElementById("question");
   var answer1El = document.getElementById("answer1");
@@ -92,36 +99,20 @@ function quizStart() {
   answer2El.textContent = quiz.answer2;
   answer3El.textContent = quiz.answer3;
   answer4El.textContent = quiz.answer4;
-
-  if (questionCounter === 6) {
+  } else {
     timesUp();
-  }
+  };
 };
 
-function checkAnswerFunction() {
-
-  console.log(this.value);
-  if (this.value === correctAnswers[questionCounter]) {
-  }
-
-  else {
-
-  }
+function checkAnswers() {
   questionCounter++
   quizStart();
-}
+  var resultEl = document.getElementById("result");
 
-
-document.getElementById("start").addEventListener("click", startfunction);
-
-document.getElementsByClassName("answer")[0].addEventListener("click", checkAnswerFunction);
-document.getElementsByClassName("answer")[1].addEventListener("click", checkAnswerFunction);
-document.getElementsByClassName("answer")[2].addEventListener("click", checkAnswerFunction);
-document.getElementsByClassName("answer")[3].addEventListener("click", checkAnswerFunction);
-
-
-
-
-for (var i = 0; i < qAndA.length; i++) {
-
-}
+  if(correctAnswers[questionCounter]){
+    resultEl.textContent = "That is the correct answer!";
+  } else {
+    resultEl.textContent = "That is the wrong answer.";
+    timer = timer - 10;
+  }
+};
