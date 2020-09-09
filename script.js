@@ -60,8 +60,7 @@ function countdown() {
   var timeInterval = setInterval(function () {
     timerEl.textContent = timer;
     timer--;
-    console.log(timer);
-    if (timer === 0) {
+    if (timer <= 0) {
       timerEl.textContent = "0";
       timesUp();
       clearInterval(timeInterval);
@@ -83,6 +82,7 @@ function timesUp() {
   var card2El = document.getElementById("card2");
   card1El.style.display = "none";
   card2El.style.display = "block";
+  clearInterval(timeInterval);
 };
 
 function quizStart() {
@@ -105,14 +105,14 @@ function quizStart() {
 };
 
 function checkAnswers() {
-  questionCounter++
-  quizStart();
+  const userAnswer = this.textContent;
   var resultEl = document.getElementById("result");
-
-  if(correctAnswers[questionCounter]){
+  if(correctAnswers[questionCounter] === userAnswer){
     resultEl.textContent = "That is the correct answer!";
   } else {
     resultEl.textContent = "That is the wrong answer.";
     timer = timer - 10;
   }
+  questionCounter++
+  quizStart();
 };
