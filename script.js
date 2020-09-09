@@ -48,6 +48,7 @@ var correctAnswers = [qAndA[0].answer1, qAndA[1].answer3, qAndA[2].answer4, qAnd
 var questionIndex = 0;
 var timerEl = document.getElementById("timer");
 var i = 0;
+var timeInterval;
 
 document.getElementById("start").addEventListener("click", startfunction);
 document.getElementsByClassName("answer")[0].addEventListener("click", checkAnswers);
@@ -57,7 +58,7 @@ document.getElementsByClassName("answer")[3].addEventListener("click", checkAnsw
 
 function countdown() {
   timer = 60;
-  var timeInterval = setInterval(function () {
+  timeInterval = setInterval(function () {
     timerEl.textContent = timer;
     timer--;
     if (timer <= 0) {
@@ -82,7 +83,7 @@ function timesUp() {
   var card2El = document.getElementById("card2");
   card1El.style.display = "none";
   card2El.style.display = "block";
-  clearInterval(timeInterval);
+  clearTimeout(timeInterval);
 };
 
 function quizStart() {
