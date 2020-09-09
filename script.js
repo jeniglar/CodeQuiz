@@ -127,7 +127,7 @@ function checkAnswers() {
   quizStart();
 };
 
-function showScores () {
+function showScoreForm () {
   card1El.style.display = "none";
   card2El.style.display = "none";
   jumbotronEl.style.display = "none";
@@ -137,21 +137,21 @@ function showScores () {
 
 function saveHighscore() {
   var initials = document.querySelector("#initials").value;
-  localStorage.setItem("initials", initials);
+  localStorage.setItem("initials", JSON.stringify(initials));
   var score = document.querySelector("#timer").value;
-  localStorage.setItem("timer", score);
+  localStorage.setItem("timer", JSON.stringify(score));
 }
 
 function displayHighscores() {
   var initialsInput = localStorage.getItem("initials");
-  document.getElementById("showInitials").innerHTML = localStorage.getItem(initialsInput);
+  document.getElementById("showInitials").innerHTML = JSON.parse(localStorage.getItem(initialsInput));
   var finalScore = localStorage.getItem("timer");
-  document.getElementById("showScore").innerHTML = localStorage.getItem(finalScore);
-  showScores();
+  document.getElementById("showScore").innerHTML = JSON.parse(localStorage.getItem(finalScore));
+  showScoreForm();
   }
 
 function saveScores (event) {
   event.preventDefault();
-  showScores();
+  showScoreForm();
   saveHighscore();
 }
