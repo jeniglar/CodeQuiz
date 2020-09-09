@@ -17,13 +17,13 @@
 
 <body>
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="highscores.html">View High Scores</a>
-        <section class="hidden">Timer: <span id="timer">60</span></section>
+        <a class="btn btn-primary btn-sm" id="scores" role="button">View High Scores</a>
+        <section class="hidden" id="clock">Timer: <span id="timer">60</span></section>
     </nav>
     <section class="container">
         <section class="row">
             <aside class="col-1"></aside>
-            <main class="jumbotron col-10 mt-5" style="text-align:center">
+            <main class="jumbotron col-10 mt-5" id="jumbo1" style="text-align:center">
                 <h1 class="display-4">Coding Quiz Challenge</h1>
                 <p class="lead">Try to answer the following code-related questions within the 60 second time limit. Keep
                     in mind that incorrect answers will penalize your score time by 10 seconds. Good luck!</p>
@@ -60,15 +60,29 @@
             <main class="card col-10 mt-5" id="card2" style="max-width: 540px; text-align:center">
                 <section class="card-body">
                     <h3 class="mb-4">All done!</h5>
-                    <h5>Your final score is</h5>
+                    <h5 id="finalScore"></h5>
                     <form class="form-inline mt-5 mb-5">
                         <section class="form-group">
                           <h5>Enter Initials:</h5>
                           <input type="text" class="form-control" id="initials">
                         </section>
-                        <button type="submit" class="btn btn-primary" href="highscores.html">Submit</button>
+                        <button class="btn btn-primary" id="submit" role="button">Submit</button>
                       </form>
                 </section>
+            </main>
+            <aside class="col-1"></aside>
+        </section>
+    </section>
+
+    <section class="container">
+        <section class="row">
+            <aside class="col-1"></aside>
+            <main class="jumbotron col-10 mt-5" id="jumbo2" style="text-align:center">
+                <h1 class="display-4">High Scores</h1>
+                <hr class="my-4">
+                <p>Insert winners here</p>
+                <a class="btn btn-primary btn-lg" role="button" href="index.html">Quiz Home</a>
+                <a class="btn btn-primary btn-lg" role="button">Clear High Scores</a>
             </main>
             <aside class="col-1"></aside>
         </section>
