@@ -62,8 +62,8 @@ document.getElementsByClassName("answer")[0].addEventListener("click", checkAnsw
 document.getElementsByClassName("answer")[1].addEventListener("click", checkAnswers);
 document.getElementsByClassName("answer")[2].addEventListener("click", checkAnswers);
 document.getElementsByClassName("answer")[3].addEventListener("click", checkAnswers);
-document.getElementById("scores").addEventListener("click", showScores);
-document.getElementById("submit").addEventListener("click", showScores);
+document.getElementById("scores").addEventListener("click", displayHighscores);
+document.getElementById("submit").addEventListener("click", saveScores);
 
 
 function countdown() {
@@ -92,7 +92,7 @@ function timesUp() {
   clearTimeout(timeInterval);
   timerEl.style.display = "none";
   clockEl.style.display = "none";
-  document.getElementById("finalScore").innerHTML = ("Your final score is " + (timer + 1));
+  document.getElementById("finalScore").innerHTML = ("Your final score is " + (timer));
 };
 
 function quizStart() {
@@ -133,4 +133,25 @@ function showScores () {
   jumbotronEl.style.display = "none";
   navbarEl[0].style.display = "none";
   jumbo2El.style.display = "block";
+}
+
+function saveHighscore() {
+  var initials = document.querySelector("#initials").value;
+  localStorage.setItem("initials", initials);
+  var score = document.querySelector("#timer").value;
+  localStorage.setItem("timer", score);
+}
+
+function displayHighscores() {
+  var initialsInput = localStorage.getItem("initials");
+  document.getElementById("showInitials").innerHTML = localStorage.getItem(initialsInput);
+  var finalScore = localStorage.getItem("timer");
+  document.getElementById("showScore").innerHTML = localStorage.getItem(finalScore);
+  showScores();
+  }
+
+function saveScores (event) {
+  event.preventDefault();
+  showScores();
+  saveHighscore();
 }
