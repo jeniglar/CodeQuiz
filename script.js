@@ -135,18 +135,27 @@ function showScoreForm () {
   jumbo2El.style.display = "block";
 }
 
+
 function saveHighscore() {
+  var scores = JSON.parse(localStorage.getItem("scores"))
+  if (scores === null) {
+    scores = [];
+  }
   var initials = document.querySelector("#initials").value;
-  localStorage.setItem("initials", JSON.stringify(initials));
-  var score = document.querySelector("#timer").value;
-  localStorage.setItem("timer", JSON.stringify(score));
+  var score = document.querySelector("#timer").textContent;
+  scores.push({initials, score});
+  localStorage.setItem("scores", JSON.stringify(scores));
+  displayHighscores();
 }
 
 function displayHighscores() {
-  var initialsInput = localStorage.getItem("initials");
-  document.getElementById("showInitials").innerHTML = JSON.parse(localStorage.getItem(initialsInput));
-  var finalScore = localStorage.getItem("timer");
-  document.getElementById("showScore").innerHTML = JSON.parse(localStorage.getItem(finalScore));
+  var scores = JSON.parse(localStorage.getItem("scores"));
+  scores.forEach(score=>{
+    var text = document.createTextNode(score.initials + ": " + score.score);
+    var element = document.getElementById("showInitials");
+    element.appendChild(text);
+    element.appendChild(document.createElement("br"));
+  });
   showScoreForm();
   }
 
